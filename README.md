@@ -2,7 +2,7 @@
 To remove .php, .html, .htm extensions using .htaccess
 
 - Create .htaccess file, then copy & paste below coding
-
+`
 # RewriteEngine On
 # RewriteCond %{REQUEST_FILENAME} !-f
 # RewriteRule ^([^\.]+)$ $1.php [NC,L]
@@ -28,3 +28,4 @@ RewriteRule (.*)$ /$1/ [R=301,L]
 # RewriteCond %{REQUEST_FILENAME}\.php -f 
 # RewriteRule ^(.*)$ $1.php
 
+`
