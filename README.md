@@ -1,15 +1,36 @@
 # Removing-file-extensions-using-htaccess
 To remove .php, .html, .htm extensions using .htaccess
 
-- Create .htaccess file, then copy & paste below coding
+- An `.htaccess` file is a simple ASCII file that you create with a text editor like Notepad or TextMate. It provides a way to make configuration changes on a per-directory basis.
  
-- RewriteEngine On
-- RewriteCond %{REQUEST_FILENAME} !-f
-- RewriteRule ^([^/]+)/$ $1.php
-- RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php
-- RewriteCond %{REQUEST_FILENAME} !-f
-- RewriteCond %{REQUEST_FILENAME} !-d
-- RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
-- RewriteRule (.*)$ /$1/ [R=301,L] 
+ # With an .htaccess file you can:
+ 
+- Redirect the user to different page
+- Password protect a specific directory
+- Block users by IP
+- Preventing hot linking of your images
+- Rewrite URIs
+- Specify your own Error Documents
 
+# Removing .php Extension from URL
+
+ - RewriteEngine on
+ - RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+ - RewriteRule ^ /%1 [NC,L,R]
+
+ - RewriteCond %{REQUEST_FILENAME}.php -f
+ - RewriteRule ^ %{REQUEST_URI}.php [NC,L] 
+ 
+ # Removing .html Extension from URL
+ 
+- RewriteEngine on
+- RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+- RewriteRule ^ /%1 [NC,L,R]
+
+- RewriteCond %{REQUEST_FILENAME}.html -f
+- RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+
+
+ 
+- If you’re worried that search engines might index these pages as duplicate content, add a canonical meta tag in your HTML head:
  
